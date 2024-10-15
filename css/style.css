@@ -1,0 +1,97 @@
+.title {
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    height: 100vh;         
+    flex-direction: column;
+}  
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+  
+.container {
+    height: 100%; /* 부모 요소 크기를 100%로 설정 */
+    scroll-snap-type: y mandatory; /* Y축 스냅 */
+    overflow-y: scroll; /* 수직 스크롤 허용 */
+    scroll-behavior: smooth; /* 부드러운 스크롤 */
+}
+
+.page {
+    height: 100vh; /* 각 페이지는 화면 높이와 동일 */
+    scroll-snap-align: start; /* 시작 지점에서 스냅 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.page1 {
+    background-color: #e3e3e6;
+}
+
+.page2 {
+    background-color: #292828;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+.box {
+    width: 210px;
+    height: 350px;
+    background-color: #e3e3e6; 
+    border: 2px solid #333; 
+    margin: 10px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    position: relative; 
+    overflow: hidden; 
+    transition: transform 0.3s ease;
+    perspective: 1000px; /* 3D 효과를 위한 원근감 설정 */
+}
+
+
+.box .title {
+    font-weight: bold; 
+    font-size: 1.5rem; 
+    color: #292828; 
+    margin: 0; 
+    position: absolute; 
+    top: 50%; /* 수직 중앙 정렬 */
+    left: 50%; /* 수평 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 중앙 정렬을 위한 변환 */
+    transition: opacity 0.3s ease; 
+    backface-visibility: hidden; 
+    opacity: 1; /* 제목이 기본적으로 보이도록 설정 */
+}
+
+.box .content {
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+    color: #292828; 
+    text-align: center; 
+    margin-top: 40px; /* 제목과 간격 조정 */
+    transform: rotateY(180deg); /* 기본적으로 180도 회전 */
+    backface-visibility: hidden; /* 뒷면 숨기기 */
+    font-size: 20px;
+}
+
+.box:hover {
+    transform: scale(1.5); 
+}
+
+.box:hover .title {
+    opacity: 0; /* 마우스 오버 시 제목 사라짐 */
+}
+
+.box:hover .content {
+    opacity: 1; /* 마우스 오버 시 내용 보이기 */
+    transform: rotateY(0deg); /* 내용 회전 복원 */
+}
